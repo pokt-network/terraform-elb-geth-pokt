@@ -3,7 +3,6 @@
 This terraform project creates the following resources in `us-east-1` in your AWS account:
 
 
-```
 - 1 VPC [vpc_setup.tf](vpc_setup.tf)
 - 6 subnets (3 private and 3 public) [vpc_setup.tf](vpc_setup.tf)
 - 1 Internet Gateway and 1 NAT gateway for providing internet access to private instances ([vpc_setup.tf](vpc_setup.tf) and [nat.tf](nat.tf))
@@ -21,14 +20,12 @@ This terraform project creates the following resources in `us-east-1` in your AW
   - Notifications to an specified email
 - (Optional) Provides a bastion instance for the `main-public-1` subnet (in case you want to access the instances ) [elasticbeanstalk.tf](elasticbeanstalk.tf) 
 
-```
-
 
 ### Usage
 
 ####  Installation and configuration 
 
-First you need to [install terraform](https://www.terraform.io/intro/getting-started/install.html) and has the (awscli)[https://docs.aws.amazon.com/cli/latest/userguide/installing.html] correctly configured with a default profile using the following variables in your environment:
+First you need to [install terraform](https://www.terraform.io/intro/getting-started/install.html) and the [awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) correctly configured with a default profile using the following variables in your environment:
 
 ```
 AWS_ACCESS_KEY = "YOUR ACCESS KEY"
@@ -51,7 +48,7 @@ For obtainning public ssh keys for the instances you should use:
 And copy the result inside the `default` value in the variable `public_keypair` on `vars.tf`
 
 
-#### Execute
+### Execute
 
 
 Then execute the plan using terraform:
