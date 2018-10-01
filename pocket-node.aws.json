@@ -1,0 +1,15 @@
+ { 
+   "AWSEBDockerrunVersion": "1",
+   "Image": {
+     "Name": "poktnetwork/pocket-node",
+     "Update": "true"
+   },
+   "Ports": [
+     {
+       "ContainerPort": "8000"
+     }
+   ],
+   "Logging": "/var/log/nginx"
+}
+ 
+
