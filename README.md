@@ -13,8 +13,8 @@ This terraform project creates the following resources in `us-east-1` in your AW
 - 2 Security groups for the instances in each of the ELBs
 - 2 ELB applications [elasticbeanstalk.tf](elasticbeanstalk.tf)
 - 2 ELB environments (Single container Docker) [elasticbeanstalk.tf](elasticbeanstalk.tf)
-  - 1 Internal LoadBalancer for GETH nodes 
-  - 1 Public LoadBalancer for Pocket nodes
+  - 1 Internal LoadBalancer and t3.large instances for GETH nodes 
+  - 1 Public LoadBalancer and t3.small instances for Pocket nodes
   - All ELB instances are behind private subnets
   - Scaling groups with network rules
   - Enhanced Monitoring
