@@ -1,4 +1,4 @@
-## Terraform ElasticBeanstalk with single container stack for GETH and Pocket 
+## Terraform ElasticBeanstalk with single docker container stack for GETH and Pocket 
 
 This terraform project creates the following resources in `us-east-1` in your AWS account:
 
