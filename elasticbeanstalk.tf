@@ -64,6 +64,23 @@ resource "aws_elastic_beanstalk_environment" "geth-node-env" {
     value = "internal"
   }
   setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name = "LoadBalancerType"
+    value = "application"
+  }  
+  
+  setting {
+    namespace = "aws:ec2:vpc"
+    name = "ELBSubnets"
+    value = "${aws_subnet.main-public-1.id},${aws_subnet.main-public-2.id}"
+  }
+  setting {
+    namespace = "aws:elb:loadbalancer"
+    name = "CrossZone"
+    value = "true"
+  }
+
+  setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name = "IamInstanceProfile"
     value = "app-ec2-role"
@@ -89,27 +106,6 @@ resource "aws_elastic_beanstalk_environment" "geth-node-env" {
     namespace = "aws:elasticbeanstalk:environment"
     name = "ServiceRole"
     value = "aws-elasticbeanstalk-service-role"
-  }
-  setting {
-    namespace = "aws:elasticbeanstalk:environment"
-    name = "LoadBalancerType"
-    value = "application"
-  }  
-  
-  setting {
-    namespace = "aws:ec2:vpc"
-    name = "ELBScheme"
-    value = "public"
-  }
-  setting {
-    namespace = "aws:ec2:vpc"
-    name = "ELBSubnets"
-    value = "${aws_subnet.main-public-1.id},${aws_subnet.main-public-2.id}"
-  }
-  setting {
-    namespace = "aws:elb:loadbalancer"
-    name = "CrossZone"
-    value = "true"
   }
 
 # START: Deploying policies

@@ -76,6 +76,11 @@ In both commands, terraform will ask:
 ```
 
 
+#### Deploying
+
+After we run the terraform script for creating all our resources. We proceed to deploy our [`geth-node.aws.json`](geth-node.aws.json) and [`pocket-node.aws.json`](pocket-node.aws.json) by uploading those files in each environment. From now we will be working on making this process more automagicall
+
+
 #### Customizing 
   
 For customize you can directly edit vars.tf and the related terraform files mentioned in the list of resources at the beginning of this document.

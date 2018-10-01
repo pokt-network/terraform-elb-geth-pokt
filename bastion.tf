@@ -23,7 +23,7 @@ resource "aws_security_group" "bastion-sg" {
 
 resource "aws_key_pair" "bastion_key" {
   count = "${var.create_bastion == "yes" ? 1 : 0}"
-  key_name   = "bastion"
+  key_name   = "bastion-${var.environment}"
   public_key = "${var.public_keypair}"
 }
 
