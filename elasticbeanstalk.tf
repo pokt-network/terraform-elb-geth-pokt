@@ -144,7 +144,6 @@ resource "aws_elastic_beanstalk_environment" "geth-node-env" {
   }
 
 # START: Autoscaling policies
-
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "Statistic"
@@ -153,13 +152,13 @@ resource "aws_elastic_beanstalk_environment" "geth-node-env" {
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "MeasureName"
-    value = "CPUUtilization"
+    value = "NetworkIn"
   }
 
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "Unit"
-    value = "Percent"
+    value = "Bytes/Second"
   }
 
   setting {
@@ -170,9 +169,8 @@ resource "aws_elastic_beanstalk_environment" "geth-node-env" {
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "UpperThreshold"
-    value = "65"
+    value = "37500000"
   }
-
 
   setting {
     namespace = "aws:autoscaling:trigger"
@@ -183,8 +181,9 @@ resource "aws_elastic_beanstalk_environment" "geth-node-env" {
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "LowerThreshold"
-    value = "30"
+    value = "16250000"
   }
+
   
 # END:Autoscaling policies
 
@@ -322,7 +321,7 @@ resource "aws_elastic_beanstalk_environment" "pocket-node-env" {
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "UpperThreshold"
-    value = "37500000"
+    value = "10500000"
   }
 
   setting {
@@ -334,7 +333,7 @@ resource "aws_elastic_beanstalk_environment" "pocket-node-env" {
   setting {
     namespace = "aws:autoscaling:trigger"
     name = "LowerThreshold"
-    value = "16250000"
+    value = "08250000"
   }
 
   
