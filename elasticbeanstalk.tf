@@ -19,6 +19,20 @@ resource "aws_security_group" "geth" {
       cidr_blocks = ["${aws_subnet.main-private-1.cidr_block}", "${aws_subnet.main-private-2.cidr_block}", "${aws_subnet.main-private-3.cidr_block}"]
       security_groups = ["${aws_security_group.pocket.id}"] 
   },
+  ingress {
+      from_port = 30303 
+      to_port = 30303 
+      protocol = "tcp"
+      cidr_blocks = ["${aws_subnet.main-private-1.cidr_block}", "${aws_subnet.main-private-2.cidr_block}", "${aws_subnet.main-private-3.cidr_block}"]
+      security_groups = ["${aws_security_group.pocket.id}"] 
+  },
+  ingress {
+      from_port = 30303 
+      to_port = 30303 
+      protocol = "udp"
+      cidr_blocks = ["${aws_subnet.main-private-1.cidr_block}", "${aws_subnet.main-private-2.cidr_block}", "${aws_subnet.main-private-3.cidr_block}"]
+      security_groups = ["${aws_security_group.pocket.id}"] 
+  },
   egress {
       from_port = 0
       to_port = 0
@@ -417,14 +431,22 @@ resource "aws_elastic_beanstalk_environment" "pocket-node-env" {
 
 
 # ENV VARIABLES:
- setting {   
-   namespace = "aws:elasticbeanstalk:application:environment"
-   name = "POCKET_NODE_PLUGIN_ETH_NODE_URL"
-   value = "${aws_elastic_beanstalk_environment.geth-node-env.cname}"
+  setting {   
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = "POCKET_NODE_PLUGIN_ETH_NODE_URL"
+    value = "http://${aws_elastic_beanstalk_environment.geth-node-env.cname}"
   }
- setting {   
-   namespace = "aws:elasticbeanstalk:application:environment"
-   name = "POCKET_NODE_PLUGIN_ETH_NETWORK_ID"
-   value = "4"
-  } 
+ 
+  setting {   
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = "POCKET_NODE_PLUGIN_ETH_NETWORK_ID"
+    value = "4"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:environment:process:default"
+    name = "HealthCheckPath"
+    value = "/node/"
+  }
+
 }
