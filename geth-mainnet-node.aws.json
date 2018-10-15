@@ -1,5 +1,6 @@
- { 
+ {
    "AWSEBDockerrunVersion": "1",
+   "Command": "--rpc --rpcapi eth --syncmode fast > /dev/null 2> /dev/null",
    "Image": {
      "Name": "aqt01/geth-rinkeby-docker",
      "Update": "true"
@@ -7,9 +8,11 @@
    "Ports": [
      {
        "ContainerPort": "8545"
+     },
+     {
+       "ContainerPort": "30303"
      }
+
    ],
    "Logging": "/var/log/nginx"
 }
- 
-
