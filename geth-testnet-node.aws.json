@@ -1,6 +1,6 @@
  {
    "AWSEBDockerrunVersion": "1",
-   "Command": "--rinkeby --rpc --rpcapi eth --syncmode fast > /dev/null 2> <log file path>",
+   "Command": "--rinkeby --rpc --rpcapi eth --syncmode fast > /dev/null 2> /var/log/geth.log",
    "Image": {
      "Name": "aqt01/geth-rinkeby-docker",
      "Update": "true"
