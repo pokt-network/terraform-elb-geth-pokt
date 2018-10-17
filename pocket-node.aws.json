@@ -1,7 +1,7 @@
  { 
    "AWSEBDockerrunVersion": "1",
    "Image": {
-     "Name": "poktnetwork/pocket-node",
+     "Name": "poktnetwork/pocket-node:geth",
      "Update": "true"
    },
    "Ports": [

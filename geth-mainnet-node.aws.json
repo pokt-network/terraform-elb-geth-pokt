@@ -2,7 +2,7 @@
    "AWSEBDockerrunVersion": "1",
    "Command": "--rpc --rpcapi eth --syncmode fast > /dev/null 2> /var/log/geth.log",
    "Image": {
-     "Name": "aqt01/geth-rinkeby-docker",
+     "Name": "poktnetwork/geth:mainnet",
      "Update": "true"
    },
    "Ports": [
@@ -12,7 +12,6 @@
      {
        "ContainerPort": "30303"
      }
-
    ],
    "Logging": "/var/log/nginx"
 }
