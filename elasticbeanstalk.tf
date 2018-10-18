@@ -220,6 +220,13 @@ resource "aws_elastic_beanstalk_environment" "geth-testnet-node-env" {
     name = "SystemType"
     value = "enhanced"
   }
+
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name = "RootVolumeSize"
+    value = "300"
+  }
+
 }
 
 ########################################## GETH NODE ELB ################################
@@ -444,9 +451,14 @@ resource "aws_elastic_beanstalk_environment" "geth-mainnet-node-env" {
     name = "SystemType"
     value = "enhanced"
   }
+ 
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name = "RootVolumeSize"
+    value = "300"
+  }
+
 }
-
-
 
 ########################################## POCKET NODE ELB ################################
 
@@ -467,7 +479,6 @@ resource "aws_security_group" "pocket" {
       to_port = 80 
       protocol = "tcp"
       cidr_blocks = ["${aws_subnet.main-public-1.cidr_block}", "${aws_subnet.main-public-2.cidr_block}", "${aws_subnet.main-public-3.cidr_block}" ]
-
   },
   egress {
       from_port = 0
