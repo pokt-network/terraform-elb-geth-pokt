@@ -1,6 +1,6 @@
  {
    "AWSEBDockerrunVersion": "1",
-   "Command": "--rinkeby --rpc --rpcapi eth --syncmode fast > /dev/null 2> /var/log/geth.log",
+   "Command": "--rinkeby --rpc --rpcapi eth,net --rpcaddr 0.0.0.0 --rpcport 8545 --rpcvhosts=* --syncmode fast --datadir .testnet --verbosity 3",
    "Image": {
      "Name": "poktnetwork/geth:rinkeby",
      "Update": "true"
@@ -11,6 +11,12 @@
      },
      {
        "ContainerPort": "30303"
+     }
+   ],
+   "Volumes": [
+     {
+       "HostDirectory": "/var/app/rinkeby",
+       "ContainerDirectory": "/etc/.rinkeby"
      }
    ],
    "Logging": "/var/log/nginx"
