@@ -1,0 +1,12 @@
+branch-defaults:
+  master:
+    environment: geth-mainnet-node-prod 
+  staging:
+    environment: geth-mainnet-node-staging 
+global:
+  application_name: geth-mainnet-node
+  branch: master
+  default_region: us-west-2
+  artifact: deploy.zip
+  repository: null
+  sc: git

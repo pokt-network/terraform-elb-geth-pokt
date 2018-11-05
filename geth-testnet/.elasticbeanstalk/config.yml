@@ -1,0 +1,12 @@
+branch-defaults:
+  master:
+    environment: geth-testnet-node-prod 
+  staging:
+    environment: geth-testnet-node-staging 
+global:
+  application_name: geth-testnet-node
+  branch: master
+  default_region: us-west-2
+  artifact: deploy.zip
+  repository: null
+  sc: git
