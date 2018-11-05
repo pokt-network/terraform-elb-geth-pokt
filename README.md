@@ -78,6 +78,9 @@ In both commands, terraform will ask:
 After we run our terraform script and checked that everything is running and the resources are created as expected. We will proceed to deploy the geth-mainnet and geth-testnet containers.
 
 
+We assume at this point that you have (awscli)[https://aws.amazon.com/cli/] and (awsebcli)[https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html] installed and configured correctly using a IAM user with permissions for deploying on ELB or just using your AWS access id keys and secret keys on the environment level of this user
+
+
 #### Deploying geth-mainnet
 
 
