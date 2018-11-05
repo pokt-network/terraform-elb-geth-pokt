@@ -6,7 +6,7 @@ branch-defaults:
 global:
   application_name: geth-testnet-node
   branch: master
-  default_region: us-west-2
+  default_region: us-east-1
   artifact: deploy.zip
   repository: null
   sc: git
