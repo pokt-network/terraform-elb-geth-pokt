@@ -87,12 +87,8 @@ We assume at this point that you have (awscli)[https://aws.amazon.com/cli/] and 
 > cd geth-mainnet
 
 
-Inside the geth-mainnet folder you neeed to edit the file `.elasticbeanstalk/config.yml` with the parameters that matchs the configuration that you already created for your ELB.
-
-After you edited everything as expected you should proceed with the following commands to deploy the docker container properly:
-
-
 > make deploy ENV=geth-mainnet-node-staging
+
 
 Just replace `staging` with the environment that you deployed using terraform before
 
@@ -100,8 +96,11 @@ The make command uses the Makefile for zipping the content of the folder `geth-m
 
 For more information about configuration in Elasticbeanstalk. Please check this (link)[https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-configuration-methods-before.html]
 
+
 Once this is done, this will deploy to ELB and will create a docker container with geth configured for mainnet purposes. Also it will run the commands described in `.ebextensions/` in order to 
 modify the storage of docker to overlay2 for using all the disk space in  the docker container and restart the docker daemon. For more information about the functionality of the ELB and other configurations please check (this)[https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/ebextensions.html]
+
+If you see any issue while deploying your container, please check the `.elasticbeanstalk/config.yml` to see if everything matchs your configuration and if the script Makefile do what your setup expects. We are using basic configurations for deploying a simple geth container with no storage issues
 
 
 #### Deploying geth-testnet
@@ -109,10 +108,8 @@ modify the storage of docker to overlay2 for using all the disk space in  the do
 
 FOr deploying testnet is the same procedure as the step before
 
+
 > cd geth-testnet
-
-
-Edit the configuration file that matchs your setup inside `.elasticbeanstalk/config.yml` and then proceed with:
 
 
 > make deploy ENV=geth-testnet-node-staging
@@ -120,9 +117,25 @@ Edit the configuration file that matchs your setup inside `.elasticbeanstalk/con
 
 Replacing `staging` with the environment that you deployed using terraform before. 
 
-
 Please check the links in the `Deploying geth-mainnet` step for more info
 
+
+#### Deploying pocket-node 
+
+
+FOr deploying pocket-node is the same procedure as the step before
+
+
+> cd pocket-node
+
+
+> make deploy ENV=pocket-staging
+
+
+Replacing `staging` with the environment that you deployed using terraform before. 
+
+
+Please check the links in the `Deploying geth-mainnet` step for more info
 
 
 #### Customizing 
