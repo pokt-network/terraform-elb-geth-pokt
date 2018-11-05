@@ -75,7 +75,51 @@ In both commands, terraform will ask:
 
 #### Deploying
 
-After we run the terraform script for creating all our resources. We proceed to deploy our [`geth-node.aws.json`](geth-node.aws.json) and [`pocket-node.aws.json`](pocket-node.aws.json) by uploading those files in each environment. From now we will be working on making this process more automagicall
+After we run our terraform script and checked that everything is running and the resources are created as expected. We will proceed to deploy the geth-mainnet and geth-testnet containers.
+
+
+#### Deploying geth-mainnet
+
+
+> cd geth-mainnet
+
+
+Inside the geth-mainnet folder you neeed to edit the file `.elasticbeanstalk/config.yml` with the parameters that matchs the configuration that you already created for your ELB.
+
+After you edited everything as expected you should proceed with the following commands to deploy the docker container properly:
+
+
+> make deploy ENV=geth-mainnet-node-staging
+
+Just replace `staging` with the environment that you deployed using terraform before
+
+The make command uses the Makefile for zipping the content of the folder `geth-mainnet` and deploying it in the ELB interface automatically.
+
+For more information about configuration in Elasticbeanstalk. Please check this (link)[https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-configuration-methods-before.html]
+
+Once this is done, this will deploy to ELB and will create a docker container with geth configured for mainnet purposes. Also it will run the commands described in `.ebextensions/` in order to 
+modify the storage of docker to overlay2 for using all the disk space in  the docker container and restart the docker daemon. For more information about the functionality of the ELB and other configurations please check (this)[https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/ebextensions.html]
+
+
+#### Deploying geth-testnet
+
+
+FOr deploying testnet is the same procedure as the step before
+
+> cd geth-testnet
+
+
+Edit the configuration file that matchs your setup inside `.elasticbeanstalk/config.yml` and then proceed with:
+
+
+> make deploy ENV=geth-testnet-node-staging
+
+
+Replacing `staging` with the environment that you deployed using terraform before. 
+
+
+Please check the links in the `Deploying geth-mainnet` step for more info
+
 
 
 #### Customizing 
