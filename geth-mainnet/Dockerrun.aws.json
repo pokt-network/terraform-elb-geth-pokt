@@ -2,7 +2,7 @@
    "AWSEBDockerrunVersion": "1",
    "Command": "--rpc  --rpcapi eth,net --rpcaddr 0.0.0.0 --rpcport 8545 --rpcvhosts=* --syncmode fast --datadir .mainnet --verbosity 3",
    "Image": {
-     "Name": "poktnetwork/geth:mainnet",
+     "Name": "ethereum/client-go:v1.8.23",
      "Update": "true"
    },
    "Ports": [
